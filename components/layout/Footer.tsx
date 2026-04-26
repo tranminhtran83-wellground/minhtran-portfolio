@@ -1,0 +1,120 @@
+'use client'
+
+import Link from 'next/link'
+import { Shield } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import { useLanguage } from '@/contexts/LanguageContext'
+
+export function Footer() {
+  const { t, language } = useLanguage()
+  const currentYear = new Date().getFullYear()
+  const lang = language === 'en' ? 'en' : 'vi'
+  const [visitorCount, setVisitorCount] = useState(0)
+  const [monthNumber, setMonthNumber] = useState<number | null>(null)
+
+  useEffect(() => {
+    let isMounted = true
+
+    fetch('/api/public/visitor-count')
+      .then((res) => res.json())
+      .then((data) => {
+        if (!isMounted) return
+        if (typeof data?.count === 'number') setVisitorCount(data.count)
+        if (typeof data?.monthNumber === 'number') setMonthNumber(data.monthNumber)
+      })
+      .catch(() => {})
+
+    return () => {
+      isMounted = false
+    }
+  }, [])
+
+  const displayMonthNumber = monthNumber ?? (new Date().getMonth() + 1)
+  const monthLabel = t(`months.short.${displayMonthNumber}`)
+
+  return (
+    <footer className="border-t bg-slate-50">
+      <div className="container mx-auto px-4 py-8">
+        <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
+          <div className="flex flex-col items-center gap-2 md:items-start">
+            <p className="text-sm text-slate-600">
+              {t('footer.copyright').replace('{year}', currentYear.toString())}
+              <span className="ml-2 text-slate-400">•</span>
+              <span className="ml-2 text-slate-400">
+                {visitorCount}{' '}
+                {lang === 'en' ? `accessed/${monthLabel}` : `lượt truy cập/${monthLabel}`}
+              </span>
+            </p>
+            {/* Claude Code Credit */}
+            <p className="text-xs text-slate-400">
+              {lang === 'en' ? (
+                <>
+                  Vibe coded with <span className="text-red-500">❤️</span> using{' '}
+                  <a
+                    href="https://claude.ai/code"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary-600 hover:underline font-medium"
+                  >
+                    Claude Code
+                  </a>{' '}
+                  by Anthropic
+                </>
+              ) : (
+                <>
+                  Vibe coded với <span className="text-red-500">❤️</span> sử dụng{' '}
+                  <a
+                    href="https://claude.ai/code"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary-600 hover:underline font-medium"
+                  >
+                    Claude Code
+                  </a>{' '}
+                  của Anthropic
+                </>
+              )}
+            </p>
+          </div>
+          <div className="flex flex-col items-center gap-2 md:items-end">
+            <div className="flex gap-6">
+              <Link
+                href="mailto:tranminhtran83@gmail.com"
+                className="text-slate-600 hover:text-primary-600"
+              >
+                {t('footer.email')}
+              </Link>
+              <Link
+                href="https://www.linkedin.com/in/hưng-đinh-03742217b/"
+                target="_blank"
+                className="text-slate-600 hover:text-primary-600"
+              >
+                {t('footer.linkedin')}
+              </Link>
+              <Link
+                href="https://github.com/Hung-Reo"
+                target="_blank"
+                className="text-slate-600 hover:text-primary-600"
+              >
+                {t('footer.github')}
+              </Link>
+              <Link
+                href="/security"
+                className="text-slate-600 hover:text-primary-600"
+              >
+                {t('footer.securityPage')}
+              </Link>
+            </div>
+            <div className="flex items-center gap-2 text-xs text-slate-500">
+              <Shield className="h-3 w-3" />
+              <span>{t('footer.security')}</span>
+              <Link href="/security" className="ml-1 underline hover:text-primary-600">
+                {t('footer.learnMore')}
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  )
+}

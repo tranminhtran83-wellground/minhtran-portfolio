@@ -1,0 +1,142 @@
+/**
+ * NextAuth v5 configuration
+ * Handles admin authentication with email + password
+ */
+
+import NextAuth from 'next-auth'
+import Credentials from 'next-auth/providers/credentials'
+import bcrypt from 'bcryptjs'
+import { kv } from '@vercel/kv'
+
+// Admin credentials from environment variables
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'tranminhtran83@gmail.com'
+const BACKUP_ADMIN_EMAIL = process.env.BACKUP_ADMIN_EMAIL
+
+// Helper to check if email is an admin email
+function isAdminEmail(email: string): boolean {
+  const normalizedEmail = email.toLowerCase()
+  if (normalizedEmail === ADMIN_EMAIL.toLowerCase()) return true
+  if (BACKUP_ADMIN_EMAIL && normalizedEmail === BACKUP_ADMIN_EMAIL.toLowerCase()) return true
+  return false
+}
+
+// SECURITY: Password hash must be stored in environment variable
+// The hash is stored in ADMIN_PASSWORD_HASH environment variable
+// To generate a new password hash, run:
+// node -e "require('bcryptjs').hash('YOUR_NEW_PASSWORD', 10).then(console.log)"
+const ADMIN_PASSWORD_HASH = process.env.ADMIN_PASSWORD_HASH
+
+// NOTE: Validation is now done at runtime in authorize() to prevent build-time errors
+// This allows the build to complete even if ADMIN_PASSWORD_HASH is not set during build
+
+export const {
+  handlers: { GET, POST },
+  auth,
+  signIn,
+  signOut,
+} = NextAuth({
+  trustHost: true, // IMPORTANT: Required for Vercel deployment
+  providers: [
+    Credentials({
+      name: 'Credentials',
+      credentials: {
+        email: { label: 'Email', type: 'email' },
+        password: { label: 'Password', type: 'password' },
+      },
+      async authorize(credentials) {
+        if (!credentials?.email || !credentials?.password) {
+          console.log('[Auth] Missing credentials')
+          return null
+        }
+
+        // Check if email matches any admin email
+        if (!isAdminEmail(credentials.email as string)) {
+          return null
+        }
+
+        // Check for password hash in KV first (allows password reset without redeploy)
+        let passwordHash = await kv.get<string>('admin:password-hash')
+
+        // Fall back to environment variable if not in KV
+        if (!passwordHash) {
+          passwordHash = ADMIN_PASSWORD_HASH ?? null
+        }
+
+        if (!passwordHash) {
+          console.error(
+            '[Auth] ADMIN_PASSWORD_HASH environment variable is required. ' +
+            'Generate a hash with: node -e "require(\'bcryptjs\').hash(\'YOUR_PASSWORD\', 10).then(console.log)"'
+          )
+          return null
+        }
+
+        // Verify password
+        const isValid = await bcrypt.compare(
+          credentials.password as string,
+          passwordHash
+        )
+
+        if (!isValid) {
+          return null
+        }
+
+        // Return user object
+        return {
+          id: '1',
+          name: 'Minh Tran',
+          email: credentials.email as string,
+          role: 'admin',
+        }
+      },
+    }),
+  ],
+  pages: {
+    signIn: '/admin/login',
+  },
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        token.role = (user as any).role
+      }
+      return token
+    },
+    async session({ session, token }) {
+      if (session.user) {
+        ;(session.user as any).role = token.role
+      }
+      return session
+    },
+  },
+  session: {
+    strategy: 'jwt',
+    maxAge: 30 * 24 * 60 * 60, // 30 days (extended for better UX)
+  },
+  cookies: {
+    sessionToken: {
+      name: `${process.env.NODE_ENV === 'production' ? '__Secure-' : ''}next-auth.session-token`,
+      options: {
+        httpOnly: true, // Prevents JavaScript access (XSS protection)
+        sameSite: 'lax', // CSRF protection
+        path: '/',
+        secure: process.env.NODE_ENV === 'production', // HTTPS only in production
+      },
+    },
+  },
+})
+
+/**
+ * Helper function to check if user is authenticated as admin
+ */
+export async function isAdmin() {
+  const session = await auth()
+  return session?.user && (session.user as any).role === 'admin'
+}
+
+/**
+ * Helper function to hash a password
+ * Use this to generate ADMIN_PASSWORD_HASH
+ * Example: node -e "require('./lib/auth').hashPassword('your-password').then(console.log)"
+ */
+export async function hashPassword(password: string): Promise<string> {
+  return bcrypt.hash(password, 10)
+}
