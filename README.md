@@ -1,6 +1,6 @@
 # Minh Tran Page
 
-> Personal portfolio website — "Khu Vườn Nhỏ" (My Little Garden)
+> Personal portfolio website
 
 **Live:** [tmhgarden.vercel.app](https://tmhgarden.vercel.app)
 
@@ -66,4 +66,3 @@ public/           # Static assets
 ## 📝 License
 
 Private project. All rights reserved.
-
