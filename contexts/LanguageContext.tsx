@@ -358,8 +358,8 @@ const translations = {
     'contact.email.label': 'Email',
     'contact.linkedin.label': 'LinkedIn',
     'contact.linkedin.description': 'Kết nối với tôi',
-    //'contact.github.label': 'GitHub',
-    //'contact.github.description': 'Xem code của tôi',
+    'contact.github.label': 'GitHub',
+    'contact.github.description': 'Xem code của tôi',
 
     // Security Page
     'security.title': 'Bảo mật & Quyền riêng tư',
