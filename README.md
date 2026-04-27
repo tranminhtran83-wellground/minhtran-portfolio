@@ -1,22 +1,8 @@
-# Minh Tran Portfolio
+# Minh Tran Page
 
 > Personal portfolio website — "Khu Vườn Nhỏ" (My Little Garden)
 
-## 🌿 About
-
-A bilingual (EN/VI) portfolio website for **Minh Tran**, Head of Digital & Technology Consulting for Supply Chain at Unilever Greater Asia. Built with Next.js 14, TypeScript, and Tailwind CSS.
-
-**Live:** [minhtran-portfolio.vercel.app](https://minhtran-portfolio.vercel.app)
-
-## ✨ Features
-
-- 🌐 **Bilingual** — Full English/Vietnamese support
-- 📝 **Blog** — Write and publish articles via admin CMS
-- 💼 **Projects** — Showcase initiatives and ideas
-- 📬 **Contact Form** — Get in touch page
-- 🔒 **Admin Dashboard** — Manage content, blog posts, projects
-- 📊 **Visitor Analytics** — Privacy-friendly, GDPR compliant
-- 📱 **Responsive** — Mobile-first design
+**Live:** [tmhgarden.vercel.app](https://tmhgarden.vercel.app)
 
 ## 🚀 Quick Start
 
@@ -80,3 +66,4 @@ public/           # Static assets
 ## 📝 License
 
 Private project. All rights reserved.
+
