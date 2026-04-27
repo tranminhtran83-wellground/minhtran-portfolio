@@ -504,3 +504,45 @@ export function calculateReadingTime(content: string): number {
 export function generateId(): string {
   return uuidv4()
 }
+
+// ============================================
+// Home Page Content
+// ============================================
+
+export interface HomeContent {
+  hero: {
+    en: { name: string; tagline: string; description: string }
+    vi: { name: string; tagline: string; description: string }
+  }
+  values: Array<{
+    en: { title: string; description: string }
+    vi: { title: string; description: string }
+  }>
+  origin: {
+    en: { title: string; act1: string; question: string; act3intro: string; closing: string }
+    vi: { title: string; act1: string; question: string; act3intro: string; closing: string }
+  }
+  updatedAt: number
+}
+
+export async function getHomeContent(): Promise<HomeContent | null> {
+  try {
+    return await kv.get<HomeContent>('content:home')
+  } catch (error) {
+    console.error('Error fetching home content:', error)
+    return null
+  }
+}
+
+export async function saveHomeContent(content: HomeContent): Promise<void> {
+  try {
+    await kv.set('content:home', {
+      ...content,
+      updatedAt: Date.now(),
+    })
+  } catch (error) {
+    console.error('Error saving home content:', error)
+    throw error
+  }
+}
+

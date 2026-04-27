@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Lora } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react'
 import { Toaster } from 'sonner'
 import './globals.css'
@@ -10,7 +10,17 @@ import { SessionProvider } from '@/components/providers/SessionProvider'
 import { LanguageProvider } from '@/contexts/LanguageContext'
 import { BASE_URL, DEFAULT_METADATA } from '@/lib/metadata'
 
-const inter = Inter({ subsets: ['latin', 'vietnamese'] })
+const inter = Inter({
+  subsets: ['latin', 'vietnamese'],
+  variable: '--font-inter',
+})
+
+const lora = Lora({
+  subsets: ['latin', 'vietnamese'],
+  weight: ['400', '600', '700'],
+  style: ['normal', 'italic'],
+  variable: '--font-lora',
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
@@ -70,7 +80,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="vi">
-      <body className={inter.className}>
+      <body className={`${lora.variable} ${inter.variable} font-lora`}>
         <LanguageProvider>
           <SessionProvider>
             <div className="flex min-h-screen flex-col">

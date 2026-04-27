@@ -4,18 +4,12 @@ import Link from 'next/link'
 import { Navigation } from './Navigation'
 import { MobileNav } from './MobileNav'
 import { LanguageSwitcher } from '@/components/LanguageSwitcher'
-import { TurtleWalker } from '@/components/TurtleWalker'
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-white/80 backdrop-blur-sm">
-      {/* Turtle Walker - positioned relative to header */}
-      <div className="relative">
-        <TurtleWalker />
-      </div>
-
+    <header className="sticky top-0 z-50 w-full border-b border-garden-muted/30 bg-garden-bg/90 backdrop-blur-sm">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
-        <Link href="/" className="text-xl font-bold text-primary-600">
+        <Link href="/" className="text-xl font-bold text-garden-accent font-lora">
           Minh Tran
         </Link>
         {/* Desktop Navigation */}
