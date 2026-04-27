@@ -103,6 +103,7 @@ export default function HomePage() {
               {t('home.hero.viewProjects')}
             </Link>
           </div>
+         </section>
       </div>
     </div>
   )
