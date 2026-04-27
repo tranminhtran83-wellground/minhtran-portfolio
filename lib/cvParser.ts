@@ -14,12 +14,11 @@ const AI_MODEL = process.env.OPENAI_MODEL || 'gpt-4o-mini'
  * Extract text from PDF or DOCX file
  */
 export async function extractTextFromFile(
-  fileUrl: string,
+  file: File,
   fileName: string
 ): Promise<string> {
   try {
-    const response = await fetch(fileUrl)
-    const buffer = await response.arrayBuffer()
+    const buffer = await file.arrayBuffer()
 
     if (fileName.toLowerCase().endsWith('.pdf')) {
       console.log('[CV Parser] Extracting text from PDF...')

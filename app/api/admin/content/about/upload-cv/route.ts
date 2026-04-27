@@ -48,9 +48,9 @@ export async function POST(req: NextRequest) {
     })
     console.log(`[CV Upload] ✅ Uploaded to: ${blob.url}`)
 
-    // 5. Extract text from file
+    // 5. Extract text from file directly from memory
     console.log('[CV Upload] Extracting text...')
-    const text = await extractTextFromFile(blob.url, fileName)
+    const text = await extractTextFromFile(file, fileName)
 
     if (!text || text.trim().length < 100) {
       return NextResponse.json(
