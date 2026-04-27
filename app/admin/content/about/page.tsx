@@ -12,7 +12,7 @@ const emptyAboutData: AboutContent = {
   version: '1.0.0',
   updatedAt: Date.now(),
   updatedBy: 'admin',
-  cv: null,
+  cv: undefined,
   hero: {
     en: { name: '', role: '', intro: '', photo: '' },
     vi: { name: '', role: '', intro: '', photo: '' },
