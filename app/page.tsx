@@ -1,7 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
+//import Image from 'next/image'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { CVDownloadButton } from '@/components/CVDownloadButton'
 
@@ -56,16 +56,13 @@ export default function HomePage() {
     // Toàn bộ trang = đúng 1 màn hình (100dvh trừ header ~64px)
     <div className="flex flex-col" style={{ height: 'calc(100dvh - 64px)' }}>
 
-      {/* Banner — chiếm ~60% chiều cao */}
+      {/* Banner — chiếm ~60% chiều cao -> Tran modify 28 Apr 2026 */}
       <section className="relative flex-shrink-0" style={{ height: '60%' }}>
-        <Image
-          src={hero.bannerImage}
-          alt="Khu Vườn"
-          fill
-          priority
-          className="object-cover object-center"
-          sizes="100vw"
-        />
+<img
+  src={hero.bannerImage}
+  alt="Khu Vườn"
+  className="absolute inset-0 w-full h-full object-cover object-center"
+/>
         <div className="absolute inset-0 bg-gradient-to-t from-garden-bg/90 via-garden-bg/30 to-transparent" />
         <div className="absolute inset-0 flex items-center justify-center px-4">
           <div className="text-center">
