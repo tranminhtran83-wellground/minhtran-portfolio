@@ -61,7 +61,7 @@ export default function AboutPage() {
           )}
           <h1 className="text-4xl font-bold text-slate-900 mb-2">{aboutData.hero[lang].name}</h1>
           <p className="text-xl text-primary-600 font-medium mb-4">{aboutData.hero[lang].role}</p>
-          <p className="text-lg text-slate-600 max-w-2xl">{aboutData.hero[lang].intro}</p>
+          <p className="text-lg text-slate-600 max-w-2xl whitespace-pre-wrap text-left">{aboutData.hero[lang].intro}</p>
         </div>
 
         {/* Professional Journey */}
