@@ -5,11 +5,13 @@ import { ArrowLeft, Save, Loader2 } from 'lucide-react'
 import Link from 'next/link'
 import { Button } from '@/components/ui/Button'
 
+// Tran modify
 interface HomeContent {
   hero: {
-    en: { name: string; tagline: string; description: string }
-    vi: { name: string; tagline: string; description: string }
+    en: { name: string; tagline: string; description: string; bannerImage?: string }
+    vi: { name: string; tagline: string; description: string; bannerImage?: string }
   }
+  //End Tran modify
   values: Array<{
     en: { title: string; description: string }
     vi: { title: string; description: string }
