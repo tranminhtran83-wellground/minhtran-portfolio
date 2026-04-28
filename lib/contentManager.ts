@@ -511,8 +511,8 @@ export function generateId(): string {
 
 export interface HomeContent {
   hero: {
-    en: { name: string; tagline: string; description: string }
-    vi: { name: string; tagline: string; description: string }
+    en: { name: string; tagline: string; description: string; bannerImage?: string }
+    vi: { name: string; tagline: string; description: string; bannerImage?: string }
   }
   values: Array<{
     en: { title: string; description: string }
