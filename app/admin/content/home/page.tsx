@@ -183,8 +183,7 @@ export default function AdminHomePage() {
           <h2 className="text-lg font-semibold mb-4 flex items-center gap-2">
             🏠 Hero Section
           </h2>
-// Tran them vao
-{/* Banner Image */}
+{/* Tran modify - Banner Image */}
 <div>
   <label className="block text-sm font-medium text-slate-700 mb-1">
     Hình Banner
@@ -214,7 +213,7 @@ export default function AdminHomePage() {
     Paste URL ảnh từ internet, hoặc để trống để dùng ảnh mặc định
   </p>
 </div>
-//End Tran them vao          
+{/* End Tran modify Banner Image */}      
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-slate-700 mb-1">Name</label>
