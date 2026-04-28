@@ -85,20 +85,13 @@ export function Footer() {
                 {t('footer.email')}
               </Link>
               <Link
-                href="https://www.linkedin.com/in/hưng-đinh-03742217b/"
+                href="https://www.linkedin.com/in/tran-thi-minh-tran-02339959/"
                 target="_blank"
                 className="text-slate-600 hover:text-primary-600"
               >
                 {t('footer.linkedin')}
               </Link>
-              <Link
-                href="https://github.com/Hung-Reo"
-                target="_blank"
-                className="text-slate-600 hover:text-primary-600"
-              >
-                {t('footer.github')}
-              </Link>
-              <Link
+               <Link
                 href="/security"
                 className="text-slate-600 hover:text-primary-600"
               >
