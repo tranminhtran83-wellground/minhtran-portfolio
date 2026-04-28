@@ -23,7 +23,7 @@ const translations = {
     // Header Navigation
     'header.home': 'The Garden',
     'header.about': 'The Growth',
-    'header.projects': 'The Bloom',
+    'header.projects': 'Building Legacy',
     'header.blog': 'Lesson Learned',
     'header.contact': 'Say Hello',
     'header.admin': 'Admin',
@@ -70,7 +70,7 @@ const translations = {
     
 //'header.home': 'The Garden',
 //'header.about': 'The Growth',
-//'header.projects': 'The Bloom',
+//'header.projects': 'Building Legacy',
 //'header.blog': 'Lesson Learned',
 //'header.contact': 'Say Hello',
     
@@ -127,8 +127,8 @@ const translations = {
     //'about.beyond.interests': "When I'm not working on IT solutions or learning about AI, you'll find me running or traveling. I believe in continuous learning and challenging myself with new opportunities. My 20 years of experience across diverse industries has taught me that the best solutions come from understanding people first, then applying technology.",
 
     // Projects Page
-    'projects.title': 'What I Seek',
-    'projects.subtitle': 'I’m not looking for the next step on a career ladder. I’m looking for a place where I can truly make a difference and stay to see the results flourish.',
+    'projects.title': 'Building Legacy',
+    'projects.subtitle': 'I'm not looking for the next step on a career ladder. I'm looking for a place where I can truly make a difference and stay to see the results flourish. I am open to: COO · Co-founder · or Building something new from the ground up.',
     'projects.empty': 'We are a good fit if you need a partner to build values with a human-centric heart and a foundation built on continuous learning.We might not be a match if you view change as a risk to be avoided, or if you prioritize static stability over growth-driven evolution.',
     'projects.emptySubtitle': 'I am open to: COO · Co-founder · or Building something new from the ground up.',
     'projects.backToProjects': '← Back to Projects',
@@ -224,7 +224,7 @@ const translations = {
     // Header Navigation
     'header.home': 'Khu Vườn',
     'header.about': 'Chuyện Khởi Đầu',
-    'header.projects': 'Nở Hoa',
+    'header.projects': 'Kiến Tạo Giá Trị',
     'header.blog': 'Góc Suy Gẫm',
     'header.contact': 'Kết nối',
     'header.admin': 'Admin',
@@ -266,7 +266,7 @@ const translations = {
     'home.hero.name': 'TRAN',
     'home.hero.tagline': 'Operations & Digital Transformation | Unilever | Completing EMBA',
     'home.hero.description': 'Chào mừng bạn đến với khu vườn Vercel nhỏ của mình, nơi mình ghi lại hành trình nghề nghiệp bằng tất cả sự chân thành, mộc mạc, không tô vẽ hay phô trương...',
-    'home.hero.viewProjects': 'Điều tôi hướng đến',
+    'home.hero.viewProjects': 'Kiến tạo giá trị',
     'home.hero.aboutMe': 'Câu chuyện của tôi',
     
     //'home.hero.tagline': 'Trưởng phòng Công nghệ & Chuyển đổi số | Supply Chain',
@@ -326,8 +326,8 @@ const translations = {
     //'about.beyond.interests': 'Khi không làm việc với các giải pháp IT hoặc học về AI, bạn sẽ thấy tôi chạy bộ hoặc du lịch. Tôi tin vào việc học hỏi liên tục và thử thách bản thân với những cơ hội mới. 20 năm kinh nghiệm qua nhiều ngành khác nhau đã dạy tôi rằng giải pháp tốt nhất đến từ việc hiểu con người trước, sau đó mới áp dụng công nghệ.',
 
     // Projects Page
-    'projects.title': 'Điều tôi đang hướng đến',
-    'projects.subtitle': 'Tôi không tìm kiếm một nấc thang tiếp theo cho sự nghiệp. Tôi tìm một nơi mình thực sự có thể giúp sức và muốn ở lại đủ lâu để nhìn thấy những mùa gặt thành quả.',
+    'projects.title': 'Kiến tạo giá trị',
+    'projects.subtitle': 'Tôi không tìm kiếm một nấc thang tiếp theo cho sự nghiệp. Tôi tìm một nơi mình thực sự có thể giúp sức và muốn ở lại đủ lâu để nhìn thấy những mùa gặt thành quả. Các hình thức tôi đang mở lòng: COO · Co-founder · hoặc cùng xây dựng một điều gì đó mới mẻ từ đầu.',
     'projects.empty': 'Chúng ta sẽ là những người đồng hành phù hợp nếu bạn cần một đối tác cùng xây dựng những giá trị lấy con người làm gốc rễ, đặt sự học hỏi làm nền tảng.Chúng ta có thể không hợp nếu bạn xem thay đổi là rủi ro cần tránh, hoặc coi trọng sự ổn định hơn là sự chuyển mình để phát triển.',
     'projects.emptySubtitle': 'Các hình thức tôi đang mở lòng: COO · Co-founder · hoặc cùng xây dựng một điều gì đó mới mẻ từ đầu.',
     'projects.backToProjects': '← Quay lại',
