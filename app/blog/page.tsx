@@ -90,7 +90,6 @@ export default function BlogPage() {
         {/* Header */}
         <div className="text-center mb-12">
 
-          // Tran modify
 <h1 className="text-4xl font-bold text-slate-900 mb-4">
   {t('blog.title')}
 </h1>
@@ -98,7 +97,6 @@ export default function BlogPage() {
   {t('blog.subtitle')}
 </p>
 
-          // End Tran modify
         </div>
 
         {/* Search Bar */}
