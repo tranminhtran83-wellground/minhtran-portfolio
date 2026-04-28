@@ -128,7 +128,7 @@ const translations = {
 
     // Projects Page
     'projects.title': 'Building Legacy',
-    'projects.subtitle': 'I'm not looking for the next step on a career ladder. I'm looking for a place where I can truly make a difference and stay to see the results flourish. I am open to: COO · Co-founder · or Building something new from the ground up.',
+    'projects.subtitle': `I'm not looking for the next step on a career ladder. I'm looking for a place where I can truly make a difference and stay to see the results flourish. I am open to: COO · Co-founder · or Building something new from the ground up.`,
     'projects.empty': 'We are a good fit if you need a partner to build values with a human-centric heart and a foundation built on continuous learning.We might not be a match if you view change as a risk to be avoided, or if you prioritize static stability over growth-driven evolution.',
     'projects.emptySubtitle': 'I am open to: COO · Co-founder · or Building something new from the ground up.',
     'projects.backToProjects': '← Back to Projects',
