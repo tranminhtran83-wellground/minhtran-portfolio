@@ -1,5 +1,4 @@
 'use client'
-
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -8,8 +7,8 @@ import { CVDownloadButton } from '@/components/CVDownloadButton'
 
 interface HomeContent {
   hero: {
-    en: { name: string; tagline: string; description: string }
-    vi: { name: string; tagline: string; description: string }
+    en: { name: string; tagline: string; description: string; bannerImage?: string }
+    vi: { name: string; tagline: string; description: string; bannerImage?: string }
   }
   values: Array<{
     en: { title: string; description: string }
@@ -24,19 +23,20 @@ interface HomeContent {
 export default function HomePage() {
   const { t, language } = useLanguage()
   const [homeContent, setHomeContent] = useState<HomeContent | null>(null)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const homeRes = await fetch('/api/content/home')
-        if (homeRes.ok) {
-          const homeData = await homeRes.json()
-          if (homeData.content) {
-            setHomeContent(homeData.content)
-          }
+        const res = await fetch('/api/content/home')
+        if (res.ok) {
+          const data = await res.json()
+          if (data.content) setHomeContent(data.content)
         }
       } catch (error) {
         console.error('Failed to fetch homepage data:', error)
+      } finally {
+        setLoading(false)
       }
     }
     fetchData()
@@ -44,34 +44,31 @@ export default function HomePage() {
 
   const lang = language === 'en' ? 'en' : 'vi'
 
+  // Dùng data từ database, fallback về translations nếu chưa có
   const hero = {
     name: homeContent?.hero?.[lang]?.name || t('home.hero.name'),
     tagline: homeContent?.hero?.[lang]?.tagline || t('home.hero.tagline'),
     description: homeContent?.hero?.[lang]?.description || t('home.hero.description'),
+    bannerImage: homeContent?.hero?.en?.bannerImage || '/garden-hero.jpg',
   }
 
-
-
   return (
-    <div>
-      {/* Garden Hero Banner — full-width, no gap with header */}
-      <section
-        className="relative w-full overflow-hidden"
-        style={{ height: 'clamp(320px, 45vw, 520px)' }}
-      >
+    // Toàn bộ trang = đúng 1 màn hình (100dvh trừ header ~64px)
+    <div className="flex flex-col" style={{ height: 'calc(100dvh - 64px)' }}>
+
+      {/* Banner — chiếm ~60% chiều cao */}
+      <section className="relative flex-shrink-0" style={{ height: '60%' }}>
         <Image
-          src="/garden-hero.jpg"
-          alt="Khu Vườn — A path through the garden"
+          src={hero.bannerImage}
+          alt="Khu Vườn"
           fill
           priority
           className="object-cover object-center"
           sizes="100vw"
         />
-        {/* Gradient overlay — bottom to top */}
         <div className="absolute inset-0 bg-gradient-to-t from-garden-bg/90 via-garden-bg/30 to-transparent" />
-        {/* Hero text — centered vertically and horizontally */}
         <div className="absolute inset-0 flex items-center justify-center px-4">
-          <div className="text-center animate-fadeInUp">
+          <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold text-garden-heading drop-shadow-sm">
               {hero.name}
             </h1>
@@ -82,29 +79,32 @@ export default function HomePage() {
         </div>
       </section>
 
-      <div className="container mx-auto px-4">
-        {/* Description + CTA */}
-        <section className="py-12 text-center animate-fadeIn">
+      {/* Description + CTA — chiếm ~40% còn lại */}
+      <section className="flex-1 flex flex-col items-center justify-center px-4 text-center bg-garden-bg">
+        {loading ? (
+          <div className="h-6 w-64 bg-slate-200 animate-pulse rounded" />
+        ) : (
           <p className="mx-auto max-w-2xl text-lg md:text-xl text-garden-text leading-relaxed">
             {hero.description}
           </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <CVDownloadButton />
-            <Link
-              href="/about"
-              className="inline-flex items-center justify-center rounded-lg bg-garden-accent px-5 py-2.5 text-sm font-medium font-inter text-white transition-colors hover:bg-primary-700"
-            >
-              {t('home.hero.aboutMe')}
-            </Link>
-            <Link
-              href="/projects"
-              className="inline-flex items-center justify-center rounded-lg border border-garden-muted/50 bg-white/60 px-5 py-2.5 text-sm font-medium font-inter text-garden-text transition-colors hover:bg-white"
-            >
-              {t('home.hero.viewProjects')}
-            </Link>
-          </div>
-         </section>
-      </div>
+        )}
+        <div className="mt-6 flex flex-wrap justify-center gap-4">
+          <CVDownloadButton />
+          <Link
+            href="/about"
+            className="inline-flex items-center justify-center rounded-lg bg-garden-accent px-5 py-2.5 text-sm font-medium font-inter text-white transition-colors hover:bg-primary-700"
+          >
+            {t('home.hero.aboutMe')}
+          </Link>
+          <Link
+            href="/projects"
+            className="inline-flex items-center justify-center rounded-lg border border-garden-muted/50 bg-white/60 px-5 py-2.5 text-sm font-medium font-inter text-garden-text transition-colors hover:bg-white"
+          >
+            {t('home.hero.viewProjects')}
+          </Link>
+        </div>
+      </section>
+
     </div>
   )
 }
