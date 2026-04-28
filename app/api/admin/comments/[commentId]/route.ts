@@ -1,7 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { kv } from '@vercel/kv'
 import { auth } from '@/lib/auth'
-import type { Comment } from '@/app/api/comments/[slug]/route'
+interface Comment {
+  id: string
+  slug: string
+  name: string
+  email: string
+  content: string
+  status: 'pending' | 'approved'
+  createdAt: number
+  reply?: string
+  repliedAt?: number
+}
 
 export async function PUT(req: NextRequest, { params }: { params: { commentId: string } }) {
   const session = await auth()
