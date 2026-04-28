@@ -72,9 +72,9 @@ export default function ProjectsPage() {
           <h1 className="text-4xl font-bold text-slate-900 mb-4">
             {lang === 'en' ? 'Building Legacy' : 'Kiến Tạo Giá Trị'}
           </h1>
-          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+<p className="text-xl text-slate-600 max-w-2xl mx-auto">
             {lang === 'en'
-              ? 'I'm not looking for the next step on a career ladder. I'm looking for a place where I can truly make a difference and stay to see the results flourish. I am open to: COO · Co-founder · or Building something new from the ground up.
+              ? `I'm not looking for the next step on a career ladder. I'm looking for a place where I can truly make a difference and stay to see the results flourish. I am open to: COO · Co-founder · or Building something new from the ground up.`
               : 'Tôi không tìm kiếm một nấc thang tiếp theo cho sự nghiệp. Tôi tìm một nơi mình thực sự có thể giúp sức và muốn ở lại đủ lâu để nhìn thấy những mùa gặt thành quả. Các hình thức tôi đang mở lòng: COO · Co-founder · hoặc cùng xây dựng một điều gì đó mới mẻ từ đầu.'}
           </p>
         </div>
