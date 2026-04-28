@@ -141,7 +141,7 @@ export default function AboutEditorPage() {
               placeholder="Operations & Digital Transformation" className={inputClass} />
           </Field>
           <Field label="Giới thiệu ngắn (Intro)">
-            <textarea value={formData.hero[activeTab].intro} rows={4}
+            <textarea value={formData.hero[activeTab].intro} rows={8}
               onChange={(e) => setFormData({ ...formData, hero: { ...formData.hero, [activeTab]: { ...formData.hero[activeTab], intro: e.target.value } } })}
               placeholder="Viết vài dòng giới thiệu bản thân..." className={inputClass} />
           </Field>
