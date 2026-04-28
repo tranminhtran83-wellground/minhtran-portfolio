@@ -182,7 +182,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
 
         {/* Content */}
         <div
-          className="prose prose-slate prose-lg max-w-none mb-12"
+          className="prose prose-slate prose-lg max-w-none mb-12 text-left"
           dangerouslySetInnerHTML={{
             __html: DOMPurify.sanitize(contentToHTML(project[lang].content || ''))
           }}
