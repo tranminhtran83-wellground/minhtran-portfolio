@@ -84,6 +84,12 @@ export function AdminDashboard() {
             >
               Contact Requests
             </Link>
+            <Link
+              href="/admin/comments"
+              className="px-3 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 whitespace-nowrap"
+            >
+              💬 Comments
+            </Link>
           </nav>
         </div>
 
@@ -170,6 +176,13 @@ export function AdminDashboard() {
                 >
                   <div className="text-2xl">📬</div>
                   <div className="mt-2 text-sm font-medium text-slate-700">Contact Requests</div>
+                </Link>
+                <Link
+                  href="/admin/comments"
+                  className="rounded-lg border-2 border-dashed border-slate-300 p-4 text-center transition-colors hover:border-primary-500 hover:bg-primary-50"
+                >
+                  <div className="text-2xl">💬</div>
+                  <div className="mt-2 text-sm font-medium text-slate-700">Quản lý Comments</div>
                 </Link>
                 <button
                   onClick={() => mutate()}
