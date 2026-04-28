@@ -12,7 +12,7 @@ function formatDate(dateString: string): string {
 }
 
 export default function BlogPage() {
-  const { language } = useLanguage()
+  const { language, t } = useLanguage()
   const router = useRouter()
   const [posts, setPosts] = useState<BlogPost[]>([])
   const [loading, setLoading] = useState(true)
@@ -89,14 +89,16 @@ export default function BlogPage() {
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-slate-900 mb-4">
-            {lang === 'en' ? 'Blog' : 'Blog'}
-          </h1>
-          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-            {lang === 'en'
-              ? 'Thoughts, ideas, and insights on product management, technology, and personal growth.'
-              : 'Suy nghĩ, ý tưởng và quan điểm về quản lý sản phẩm, công nghệ và phát triển bản thân.'}
-          </p>
+
+          // Tran modify
+<h1 className="text-4xl font-bold text-slate-900 mb-4">
+  {t('blog.title')}
+</h1>
+<p className="text-xl text-slate-600 max-w-2xl mx-auto">
+  {t('blog.subtitle')}
+</p>
+
+          // End Tran modify
         </div>
 
         {/* Search Bar */}
