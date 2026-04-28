@@ -70,12 +70,12 @@ export default function ProjectsPage() {
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-slate-900 mb-4">
-            {lang === 'en' ? 'Projects' : 'Dự án'}
+            {lang === 'en' ? 'Building Legacy' : 'Kiến Tạo Giá Trị'}
           </h1>
           <p className="text-xl text-slate-600 max-w-2xl mx-auto">
             {lang === 'en'
-              ? 'Explore my portfolio of projects, experiments, and technical explorations.'
-              : 'Khám phá các dự án, thử nghiệm và khám phá kỹ thuật của tôi.'}
+              ? 'I'm not looking for the next step on a career ladder. I'm looking for a place where I can truly make a difference and stay to see the results flourish. I am open to: COO · Co-founder · or Building something new from the ground up.
+              : 'Tôi không tìm kiếm một nấc thang tiếp theo cho sự nghiệp. Tôi tìm một nơi mình thực sự có thể giúp sức và muốn ở lại đủ lâu để nhìn thấy những mùa gặt thành quả. Các hình thức tôi đang mở lòng: COO · Co-founder · hoặc cùng xây dựng một điều gì đó mới mẻ từ đầu.'}
           </p>
         </div>
 
@@ -83,7 +83,7 @@ export default function ProjectsPage() {
         {allTechStack.length > 0 && (
           <div className="mb-8">
             <h3 className="text-sm font-medium text-slate-700 mb-3">
-              {lang === 'en' ? 'Filter by Tech Stack:' : 'Lọc theo công nghệ:'}
+              {lang === 'en' ? 'Filter:' : 'Lọc:'}
             </h3>
             <div className="flex flex-wrap gap-2">
               <button
