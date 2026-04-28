@@ -42,13 +42,24 @@ export default function HomePage() {
     fetchData()
   }, [])
 
-  const lang = language === 'en' ? 'en' : 'vi'
+  //const lang = language === 'en' ? 'en' : 'vi'
 
   // Dùng data từ database, fallback về translations nếu chưa có
+  //const hero = {
+  //  name: homeContent?.hero?.[lang]?.name || t('home.hero.name'),
+  //  tagline: homeContent?.hero?.[lang]?.tagline || t('home.hero.tagline'),
+  //  description: homeContent?.hero?.[lang]?.description || t('home.hero.description'),
+  //  bannerImage: homeContent?.hero?.en?.bannerImage || '/garden-hero.jpg',
+  //}
+
+  const lang = language === 'en' ? 'en' : 'vi'
+
+  // Tính hero SAU KHI có cả homeContent lẫn language
+  const heroDB = homeContent?.hero?.[lang]
   const hero = {
-    name: homeContent?.hero?.[lang]?.name || t('home.hero.name'),
-    tagline: homeContent?.hero?.[lang]?.tagline || t('home.hero.tagline'),
-    description: homeContent?.hero?.[lang]?.description || t('home.hero.description'),
+    name: heroDB?.name || t('home.hero.name'),
+    tagline: heroDB?.tagline || t('home.hero.tagline'),
+    description: heroDB?.description || t('home.hero.description'),
     bannerImage: homeContent?.hero?.en?.bannerImage || '/garden-hero.jpg',
   }
 
@@ -76,15 +87,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Description + CTA — chiếm ~40% còn lại */}
+         {/* Description + CTA — chiếm ~40% còn lại */}
       <section className="flex-1 flex flex-col items-center justify-center px-4 text-center bg-garden-bg">
-        {loading ? (
-          <div className="h-6 w-64 bg-slate-200 animate-pulse rounded" />
-        ) : (
-          <p className="mx-auto max-w-2xl text-lg md:text-xl text-garden-text leading-relaxed">
-            {hero.description}
-          </p>
-        )}
+        <p className="mx-auto max-w-2xl text-lg md:text-xl text-garden-text leading-relaxed">
+          {loading ? '...' : hero.description}
+        </p>
+        
         <div className="mt-6 flex flex-wrap justify-center gap-4">
           <CVDownloadButton />
           <Link
