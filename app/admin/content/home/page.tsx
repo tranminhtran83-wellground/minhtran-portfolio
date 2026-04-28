@@ -181,6 +181,38 @@ export default function AdminHomePage() {
           <h2 className="text-lg font-semibold mb-4 flex items-center gap-2">
             🏠 Hero Section
           </h2>
+// Tran them vao
+{/* Banner Image */}
+<div>
+  <label className="block text-sm font-medium text-slate-700 mb-1">
+    Hình Banner
+  </label>
+  {content.hero.en.bannerImage && (
+    <img
+      src={content.hero.en.bannerImage}
+      alt="Banner preview"
+      className="w-full h-32 object-cover rounded-lg mb-2"
+    />
+  )}
+  <input
+    type="text"
+    value={content.hero.en.bannerImage || ''}
+    onChange={(e) => setContent(prev => ({
+      ...prev,
+      hero: {
+        ...prev.hero,
+        en: { ...prev.hero.en, bannerImage: e.target.value },
+        vi: { ...prev.hero.vi, bannerImage: e.target.value },
+      }
+    }))}
+    placeholder="URL hình banner (https://...) hoặc /garden-hero.jpg"
+    className="w-full px-3 py-2 border rounded-lg focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 text-sm"
+  />
+  <p className="text-xs text-slate-500 mt-1">
+    Paste URL ảnh từ internet, hoặc để trống để dùng ảnh mặc định
+  </p>
+</div>
+//End Tran them vao          
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-slate-700 mb-1">Name</label>
