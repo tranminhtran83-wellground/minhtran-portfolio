@@ -4,7 +4,7 @@ import type { BlogPost, Project } from './contentManager'
 /**
  * Base URL for the website
  */
-export const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://minhtran-portfolio.vercel.app'
+export const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://ttmt83.vercel.app'
 
 export const DEFAULT_METADATA = {
   siteName: 'Minh Tran',
@@ -28,7 +28,7 @@ export function generatePageMetadata({
   image?: string
 }): Metadata {
   const url = `${BASE_URL}${path}`
-  const ogImage = image || `${BASE_URL}/og-default.jpg`
+  const ogImage = image || `${BASE_URL}/garden-hero.jpg`
 
   return {
     title,
