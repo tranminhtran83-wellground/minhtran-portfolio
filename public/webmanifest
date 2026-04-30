@@ -1,0 +1,16 @@
+{
+  "name": "Minh Tran",
+  "short_name": "Tran's Garden",
+  "description": "Khu Vườn của Minh Tran",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f0f7f4",
+  "theme_color": "#2d6a4f",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ]
+}
