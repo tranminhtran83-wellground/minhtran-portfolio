@@ -6,7 +6,6 @@ import Link from 'next/link'
 import { useLanguage } from '@/contexts/LanguageContext'
 import type { BlogPost } from '@/lib/contentManager'
 import { Loader2, ArrowLeft, Calendar, Clock, Tag, BookOpen } from 'lucide-react'
-import DOMPurify from 'isomorphic-dompurify'
 import { marked } from 'marked'
 
 // Configure marked for better parsing
@@ -181,9 +180,9 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
 
         {/* Content */}
         <div
-          className="prose prose-slate prose-lg max-w-none mb-12"
+          className="prose prose-slate prose-lg max-w-none mb-12 text-left"
           dangerouslySetInnerHTML={{
-            __html: DOMPurify.sanitize(contentToHTML(post[lang].content || ''))
+            __html: contentToHTML(post[lang].content || '')
           }}
         />
 
