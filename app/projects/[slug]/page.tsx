@@ -96,8 +96,15 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
     )
   }
 
-  if (notFoundError || !project) {
+  if (notFoundError || !post) {
     notFound()
+  }
+
+  // Safe content getter — fallback to EN if VI is corrupted
+  function getSafeContent(lang: 'en' | 'vi') {
+    const content = post![lang]
+    if (!content?.title) return post!['en']
+    return content
   }
 
   const lang = language === 'en' ? 'en' : 'vi'
