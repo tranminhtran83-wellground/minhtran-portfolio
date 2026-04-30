@@ -9,6 +9,37 @@ import {
 
 // Force Node.js runtime for PUT/DELETE support
 export const runtime = 'nodejs'
+function fixEncoding(text: string): string {
+  if (!text) return text
+  try {
+    const bytes = new Uint8Array(text.split('').map(c => c.charCodeAt(0)))
+    const decoded = new TextDecoder('utf-8').decode(bytes)
+    if (/[àáâãèéêìíòóôõùúýăđơưạặậắẵẻẹềếểệỉịọộốổỗớờởợụứựỳỵ]/i.test(decoded)) {
+      return decoded
+    }
+    return text
+  } catch {
+    return text
+  }
+}
+
+function fixProjectEncoding(body: any) {
+  return {
+    ...body,
+    en: {
+      ...body.en,
+      title: fixEncoding(body.en?.title || ''),
+      description: fixEncoding(body.en?.description || ''),
+      content: fixEncoding(body.en?.content || ''),
+    },
+    vi: {
+      ...body.vi,
+      title: fixEncoding(body.vi?.title || ''),
+      description: fixEncoding(body.vi?.description || ''),
+      content: fixEncoding(body.vi?.content || ''),
+    },
+  }
+}
 
 /**
  * OPTIONS - Handle CORS preflight requests
@@ -68,7 +99,8 @@ export async function PUT(
       )
     }
 
-    const body = await req.json()
+    const rawBody = await req.json()
+    const body = fixProjectEncoding(rawBody)
 
     // Validate required fields
     if (!body.en?.title || !body.en?.description) {
