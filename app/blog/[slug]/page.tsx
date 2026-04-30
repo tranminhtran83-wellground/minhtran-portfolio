@@ -114,6 +114,13 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
     notFound()
   }
 
+  // Safe content getter — fallback to EN if VI is corrupted
+  function getSafeContent(lang: 'en' | 'vi') {
+    const content = post![lang]
+    if (!content?.title) return post!['en']
+    return content
+  }
+
   const lang = language === 'en' ? 'en' : 'vi'
   const publishDate = post.publishedAt
     ? formatDate(new Date(post.publishedAt).toISOString())
