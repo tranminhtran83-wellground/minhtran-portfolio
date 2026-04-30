@@ -10,6 +10,44 @@ import {
 
 // Force Node.js runtime for PUT/DELETE support
 export const runtime = 'nodejs'
+/**
+ * Fix mojibake encoding (Gemini/Word copy-paste issue)
+ * Converts incorrectly encoded Latin-1 sequences back to proper UTF-8 Vietnamese
+ */
+function fixEncoding(text: string): string {
+  if (!text) return text
+  try {
+    // If text contains mojibake patterns (Latin-1 interpreted as UTF-8)
+    // encode back to bytes then decode as UTF-8
+    const bytes = new Uint8Array(text.split('').map(c => c.charCodeAt(0)))
+    const decoded = new TextDecoder('utf-8').decode(bytes)
+    // Only use decoded version if it contains valid Vietnamese chars
+    if (/[àáâãèéêìíòóôõùúýăđơưạặậắẵẻẹềếểệỉịọộốổỗớờởợụứựỳỵ]/i.test(decoded)) {
+      return decoded
+    }
+    return text
+  } catch {
+    return text
+  }
+}
+
+function fixPostEncoding(body: any) {
+  return {
+    ...body,
+    en: {
+      ...body.en,
+      title: fixEncoding(body.en?.title || ''),
+      excerpt: fixEncoding(body.en?.excerpt || ''),
+      content: fixEncoding(body.en?.content || ''),
+    },
+    vi: {
+      ...body.vi,
+      title: fixEncoding(body.vi?.title || ''),
+      excerpt: fixEncoding(body.vi?.excerpt || ''),
+      content: fixEncoding(body.vi?.content || ''),
+    },
+  }
+}
 
 /**
  * OPTIONS - Handle CORS preflight requests
