@@ -214,6 +214,44 @@ export default function AboutEditorPage() {
             </div>
           </div>
         </Section>
+        {/* Training & Development */}
+        <Section title={`Đào tạo & Phát triển (${formData.training[activeTab].length} khóa)`}>
+          <div className="space-y-3">
+            {formData.training[activeTab].map((tr, idx) => (
+              <div key={tr.id} className="bg-slate-50 rounded-lg p-4 relative">
+                <button onClick={() => {
+                  const t2 = formData.training[activeTab].filter((_, i) => i !== idx)
+                  setFormData({ ...formData, training: { ...formData.training, [activeTab]: t2 } })
+                }} className="absolute top-3 right-3 text-red-500 hover:text-red-700">
+                  <Trash2 className="h-4 w-4" />
+                </button>
+                <div className="grid grid-cols-3 gap-3 pr-8">
+                  <div>
+                    <label className="text-xs text-slate-500 block mb-1">Tên khóa học</label>
+                    <input type="text" value={tr.name} placeholder="vd: SAP SD Module"
+                      onChange={(e) => { const t2 = [...formData.training[activeTab]]; t2[idx] = { ...t2[idx], name: e.target.value }; setFormData({ ...formData, training: { ...formData.training, [activeTab]: t2 } }) }}
+                      className={inputClass} />
+                  </div>
+                  <div>
+                    <label className="text-xs text-slate-500 block mb-1">Tổ chức cấp</label>
+                    <input type="text" value={tr.issuer} placeholder="vd: Unilever"
+                      onChange={(e) => { const t2 = [...formData.training[activeTab]]; t2[idx] = { ...t2[idx], issuer: e.target.value }; setFormData({ ...formData, training: { ...formData.training, [activeTab]: t2 } }) }}
+                      className={inputClass} />
+                  </div>
+                  <div>
+                    <label className="text-xs text-slate-500 block mb-1">Năm (tùy chọn)</label>
+                    <input type="text" value={tr.year || ''} placeholder="vd: 2023"
+                      onChange={(e) => { const t2 = [...formData.training[activeTab]]; t2[idx] = { ...t2[idx], year: e.target.value }; setFormData({ ...formData, training: { ...formData.training, [activeTab]: t2 } }) }}
+                      className={inputClass} />
+                  </div>
+                </div>
+              </div>
+            ))}
+            <AddButton onClick={() => setFormData({ ...formData, training: { ...formData.training, [activeTab]: [...formData.training[activeTab], { id: generateId(), name: '', issuer: '', year: '' }] } })} label="Thêm khóa đào tạo" />
+          </div>
+        </Section>
+
+        {/* Competencies */}
 
         {/* Competencies */}
         <Section title={`Năng lực cốt lõi (${formData.competencies[activeTab].length})`}>
