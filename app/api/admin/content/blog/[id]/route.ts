@@ -107,7 +107,8 @@ export async function PUT(
       )
     }
 
-    const rawBody = await req.json()     const body = fixPostEncoding(rawBody)
+    const rawBody = await req.json()
+      const body = fixPostEncoding(rawBody)
 
     // Validate required fields
     if (!body.en?.title || !body.en?.excerpt) {
