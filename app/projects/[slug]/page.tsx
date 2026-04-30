@@ -7,7 +7,6 @@ import { Button } from '@/components/ui/Button'
 import { useLanguage } from '@/contexts/LanguageContext'
 import type { Project } from '@/lib/contentManager'
 import { Loader2, ArrowLeft, Github, ExternalLink, Lightbulb, Code } from 'lucide-react'
-import DOMPurify from 'isomorphic-dompurify'
 import { marked } from 'marked'
 
 // Configure marked for better parsing
@@ -183,8 +182,8 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
         {/* Content */}
         <div
           className="prose prose-slate prose-lg max-w-none mb-12 text-left"
-          dangerouslySetInnerHTML={{
-            __html: DOMPurify.sanitize(contentToHTML(project[lang].content || ''))
+                    dangerouslySetInnerHTML={{
+            __html: contentToHTML(project[lang].content || '')
           }}
         />
 
