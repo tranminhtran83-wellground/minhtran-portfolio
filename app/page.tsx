@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 //import Image from 'next/image'
 import { useLanguage } from '@/contexts/LanguageContext'
-import { CVDownloadButton } from '@/components/CVDownloadButton'
+//import { CVDownloadButton } from '@/components/CVDownloadButton'
 
 interface HomeContent {
   hero: {
@@ -94,7 +94,6 @@ export default function HomePage() {
         </p>
         
         <div className="mt-6 flex flex-wrap justify-center gap-4">
-          <CVDownloadButton />
           <Link
             href="/about"
             className="inline-flex items-center justify-center rounded-lg bg-garden-accent px-5 py-2.5 text-sm font-medium font-inter text-white transition-colors hover:bg-primary-700"
