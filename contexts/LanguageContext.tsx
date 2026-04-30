@@ -24,7 +24,7 @@ const translations = {
     'header.home': 'The Garden',
     'header.about': 'The Growth',
     'header.projects': 'Building Legacy',
-    'header.blog': 'Lesson Learned',
+    'header.blog': 'Blog',
     'header.contact': 'Say Hello',
     'header.admin': 'Admin',
     'header.language': 'Language',
@@ -62,11 +62,11 @@ const translations = {
     'common.sort': 'Sort',
 
     // Home Page
-    'home.hero.name': 'Tran Thi Minh TRAN',
-    'home.hero.tagline': 'Operations & Digital Transformation | Unilever | Completing EMBA',
-    'home.hero.description': 'Welcome to my little garden. Here, I share my professional story as it is raw, real, and completely unvarnished...',
-    'home.hero.viewProjects': 'What I Seek',
-    'home.hero.aboutMe': 'About Me',
+    //'home.hero.name': 'Tran Thi Minh Tran',
+    //'home.hero.tagline': 'Operations & Digital Transformation | Unilever | Completing EMBA',
+    //'home.hero.description': 'Welcome to my little garden. Here, I share my professional story as it is raw, real, and completely unvarnished...',
+    //'home.hero.viewProjects': 'What I Seek',
+    //'home.hero.aboutMe': 'About Me',
     
 //'header.home': 'The Garden',
 //'header.about': 'The Growth',
@@ -88,8 +88,8 @@ const translations = {
 //    'home.featured.postsPlaceholder': 'Blog posts coming soon... Stay tuned! ✍️',
 
     // Garden Story Section
-    'home.origin.title': 'About This Garden',
-    'home.origin.act1': 'LinkedIn is the gate; this is the garden. A quiet corner to breathe, to write, and to uncover the path ahead after two decades of corporate life.',
+    //'home.origin.title': 'About This Garden',
+    //'home.origin.act1': 'LinkedIn is the gate; this is the garden. A quiet corner to breathe, to write, and to uncover the path ahead after two decades of corporate life.',
     //'home.origin.act2.intro': 'A question I keep returning to:',
     //'home.origin.act2.question': 'What does it mean to build something that truly matters?',
     //'home.origin.act3.intro': 'After leading digital transformation across Vietnam, Thailand, and the Philippines for Unilever, I find myself at an inflection point — curious, energized, and ready.',
@@ -129,8 +129,8 @@ const translations = {
     // Projects Page
     'projects.title': 'Building Legacy',
     'projects.subtitle': `I'm not looking for the next step on a career ladder. I'm looking for a place where I can truly make a difference and stay to see the results flourish. I am open to: COO · Co-founder · or Building something new from the ground up.`,
-    'projects.empty': 'We are a good fit if you need a partner to build values with a human-centric heart and a foundation built on continuous learning.We might not be a match if you view change as a risk to be avoided, or if you prioritize static stability over growth-driven evolution.',
-    'projects.emptySubtitle': 'I am open to: COO · Co-founder · or Building something new from the ground up.',
+    //'projects.empty': 'We are a good fit if you need a partner to build values with a human-centric heart and a foundation built on continuous learning.We might not be a match if you view change as a risk to be avoided, or if you prioritize static stability over growth-driven evolution.',
+    //'projects.emptySubtitle': 'I am open to: COO · Co-founder · or Building something new from the ground up.',
     'projects.backToProjects': '← Back to Projects',
 //    'projects.viewGithub': 'View on GitHub',
 //    'projects.liveDemo': 'Live Demo',
@@ -140,7 +140,7 @@ const translations = {
 //    'projects.viewCode': 'View Code',
 
         // Blog Page
-    'blog.title': 'My Lesson Learned',
+    'blog.title': 'Blog',
     'blog.subtitle': 'Through these chapters of reflection, you will gain a deeper insight into how I think, the experiences that shaped those thoughts, and the core values I stand for.',
     'blog.empty': 'First essays coming soon...',
     'blog.emptySubtitle': 'Working as a bee...',
