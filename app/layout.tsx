@@ -25,10 +25,10 @@ const lora = Lora({
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: 'Minh Tran - Head of Digital & Technology | Supply Chain',
+    default: 'Minh Tran',
     template: '%s | Minh Tran',
   },
-  description: '20 years experience in Supply Chain & Digital Transformation at Unilever Greater Asia. Exploring the next chapter — building something new.',
+  description: '',
   keywords: ['Supply Chain', 'Digital Transformation', 'Technology', 'COO', 'Unilever', 'FMCG', 'Vietnam', 'Leadership'],
   authors: [{ name: DEFAULT_METADATA.author }],
   creator: DEFAULT_METADATA.author,
@@ -37,21 +37,21 @@ export const metadata: Metadata = {
     locale: DEFAULT_METADATA.locale,
     url: BASE_URL,
     siteName: DEFAULT_METADATA.siteName,
-    title: 'Minh Tran - Head of Digital & Technology | Supply Chain',
-    description: '20 years experience in Supply Chain & Digital Transformation at Unilever Greater Asia. Exploring the next chapter — building something new.',
+    title: 'Minh Tran',
+    description: '...',
     images: [
       {
         url: `${BASE_URL}/garden-hero.jpg`,
         width: 1200,
         height: 630,
-        alt: 'Minh Tran - Head of Digital & Technology',
+        alt: 'Minh Tran',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Minh Tran - Head of Digital & Technology | Supply Chain',
-    description: '20 years in Supply Chain & Digital at Unilever Greater Asia. Exploring the next chapter.',
+    title: 'Minh Tran',
+    description: '...',
     images: [`${BASE_URL}/garden-hero.jpg`],
   },
   robots: {
