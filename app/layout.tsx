@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     description: '20 years experience in Supply Chain & Digital Transformation at Unilever Greater Asia. Exploring the next chapter — building something new.',
     images: [
       {
-        url: `${BASE_URL}/og-default.jpg`,
+        url: `${BASE_URL}/garden-hero.jpg`,
         width: 1200,
         height: 630,
         alt: 'Minh Tran - Head of Digital & Technology',
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Minh Tran - Head of Digital & Technology | Supply Chain',
     description: '20 years in Supply Chain & Digital at Unilever Greater Asia. Exploring the next chapter.',
-    images: [`${BASE_URL}/og-default.jpg`],
+    images: [`${BASE_URL}/garden-hero.jpg`],
   },
   robots: {
     index: true,
