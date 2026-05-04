@@ -65,8 +65,8 @@ const translations = {
     //'home.hero.name': 'Tran Thi Minh Tran',
     //'home.hero.tagline': 'Operations & Digital Transformation | Unilever | Completing EMBA',
     //'home.hero.description': 'Welcome to my little garden. Here, I share my professional story as it is raw, real, and completely unvarnished...',
-    //'home.hero.viewProjects': 'What I Seek',
-    //'home.hero.aboutMe': 'About Me',
+    'home.hero.viewProjects': 'Building Legacy',
+    'home.hero.aboutMe': 'About Me',
     
 //'header.home': 'The Garden',
 //'header.about': 'The Growth',
